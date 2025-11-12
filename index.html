@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Ultimate Button Experience</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+            color: white;
+        }
+
+        .container {
+            text-align: center;
+            z-index: 10;
+            position: relative;
+            max-width: 900px;
+            padding: 2rem;
+        }
+
+        h1 {
+            font-size: 4.5rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            animation: titlePulse 3s infinite;
+            background: linear-gradient(to right, #ff9a9e, #fad0c4, #fad0c4, #a1c4fd);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            font-size: 1.8rem;
+            margin-bottom: 3rem;
+            line-height: 1.6;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+            opacity: 0.9;
+        }
+
+        .stats {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .stat {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem 2rem;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #ffd166;
+        }
+
+        .button-container {
+            perspective: 1000px;
+            margin: 3rem 0;
+        }
+
+        .irresistible-button {
+            display: inline-block;
+            padding: 25px 80px;
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: white;
+            background: linear-gradient(45deg, #ff6b6b, #ffd166, #06d6a0, #118ab2);
+            background-size: 300% 300%;
+            border: none;
+            border-radius: 60px;
+            cursor: pointer;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), 0 0 50px rgba(255, 107, 107, 0.5);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            text-decoration: none;
+            transform-style: preserve-3d;
+            animation: float 4s ease-in-out infinite, gradientShift 4s ease infinite, glow 2s ease-in-out infinite alternate;
+            z-index: 5;
+        }
+
+        .irresistible-button:hover {
+            transform: translateY(-10px) scale(1.08) rotateX(15deg);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5), 0 0 80px rgba(255, 209, 102, 0.7);
+            background-size: 400% 400%;
+            animation: floatHover 1s ease-in-out infinite, gradientShift 2s ease infinite, glowHover 1s ease-in-out infinite alternate;
+        }
+
+        .irresistible-button:active {
+            transform: translateY(2px) scale(0.98);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .irresistible-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4), transparent);
+            transition: all 0.6s;
+        }
+
+        .irresistible-button:hover::before {
+            left: 100%;
+        }
+
+        .button-glow {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            border-radius: 60px;
+            background: radial-gradient(circle, rgba(255,255,255,0.8) 0%, rgba(255,255,255,0) 70%);
+            opacity: 0;
+            animation: pulseGlow 3s infinite;
+            z-index: -1;
+        }
+
+        .countdown {
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1rem;
+            border-radius: 15px;
+            display: inline-block;
+            backdrop-filter: blur(5px);
+        }
+
+        .hint {
+            font-size: 1.2rem;
+            margin-top: 1.5rem;
+            font-style: italic;
+            opacity: 0.8;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .credits {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            font-size: 1.2rem;
+            opacity: 0.7;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .credits i {
+            color: #ffd166;
+        }
+
+        .particles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 6px;
+            height: 6px;
+            background: white;
+            border-radius: 50%;
+            opacity: 0;
+        }
+
+        .floating-hearts {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .heart {
+            position: absolute;
+            color: #ff6b6b;
+            font-size: 24px;
+            opacity: 0;
+        }
+
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            padding: 15px 25px;
+            border-radius: 10px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            transform: translateX(150%);
+            transition: transform 0.5s ease;
+            z-index: 100;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        @keyframes floatHover {
+            0% {
+                transform: translateY(-10px) scale(1.08) rotateX(15deg);
+            }
+            50% {
+                transform: translateY(-20px) scale(1.08) rotateX(15deg);
+            }
+            100% {
+                transform: translateY(-10px) scale(1.08) rotateX(15deg);
+            }
+        }
+
+        @keyframes gradientShift {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        @keyframes glow {
+            from {
+                box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), 0 0 50px rgba(255, 107, 107, 0.5);
+            }
+            to {
+                box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4), 0 0 70px rgba(255, 209, 102, 0.7);
+            }
+        }
+
+        @keyframes glowHover {
+            from {
+                box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5), 0 0 80px rgba(255, 209, 102, 0.7);
+            }
+            to {
+                box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5), 0 0 120px rgba(6, 214, 160, 0.8);
+            }
+        }
+
+        @keyframes pulseGlow {
+            0% {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            50% {
+                opacity: 0.4;
+                transform: scale(1.2);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+        }
+
+        @keyframes titlePulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.03);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes heartFloat {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.8rem;
+            }
+            
+            .subtitle {
+                font-size: 1.4rem;
+            }
+            
+            .stats {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .irresistible-button {
+                padding: 20px 50px;
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="particles" id="particles"></div>
+    <div class="floating-hearts" id="hearts"></div>
+    
+    <div class="notification" id="notification">
+        <i class="fas fa-bell"></i> Someone just clicked the button and found something amazing!
+    </div>
+    
+    <div class="container">
+        <h1>THE BUTTON OF DESTINY AWAITS</h1>
+        <p class="subtitle">This isn't just any button. It's a gateway to extraordinary experiences, untold wonders, and life-changing moments. Will you be one of the chosen few?</p>
+        
+        <div class="stats">
+            <div class="stat">
+                <div class="stat-number" id="click-count">1,247,893</div>
+                <div>People Have Clicked</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number" id="rating">9.8/10</div>
+                <div>Satisfaction Rating</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number" id="time-left">00:24</div>
+                <div>Limited Time Offer</div>
+            </div>
+        </div>
+        
+        <div class="button-container">
+            <div class="button-glow"></div>
+            <a href="href.html" class="irresistible-button" id="magic-button">
+                <i class="fas fa-gem"></i> CLICK FOR GREATNESS <i class="fas fa-gem"></i>
+            </a>
+        </div>
+        
+        <div class="countdown">
+            <i class="fas fa-clock"></i> This opportunity disappears in <span id="timer">24</span> seconds!
+        </div>
+        
+        <p class="hint" id="hint">Studies show that 99.7% of people who click this button experience immediate joy and satisfaction. Don't be in the 0.3%!</p>
+    </div>
+    
+    <div class="credits">
+        <i class="fas fa-code"></i> Made by Nelson
+    </div>
+
+    <script>
+        // Create background particles
+        const particlesContainer = document.getElementById('particles');
+        for (let i = 0; i < 80; i++) {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            
+            // Random position
+            particle.style.left = Math.random() * 100 + 'vw';
+            particle.style.top = Math.random() * 100 + 'vh';
+            
+            // Random size
+            const size = Math.random() * 8 + 2;
+            particle.style.width = size + 'px';
+            particle.style.height = size + 'px';
+            
+            // Random animation
+            const duration = Math.random() * 20 + 10;
+            const delay = Math.random() * 10;
+            particle.style.animation = `float ${duration}s ease-in-out ${delay}s infinite`;
+            
+            particlesContainer.appendChild(particle);
+            
+            // Fade in
+            setTimeout(() => {
+                particle.style.opacity = Math.random() * 0.7 + 0.3;
+            }, delay * 1000);
+        }
+
+        // Create floating hearts
+        function createHeart() {
+            const heartsContainer = document.getElementById('hearts');
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '<i class="fas fa-heart"></i>';
+            
+            // Random position
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.top = '100vh';
+            
+            // Random animation
+            const duration = Math.random() * 5 + 3;
+            const delay = Math.random() * 2;
+            heart.style.animation = `heartFloat ${duration}s ease-in-out ${delay}s forwards`;
+            
+            heartsContainer.appendChild(heart);
+            
+            // Remove heart after animation
+            setTimeout(() => {
+                if (heartsContainer.contains(heart)) {
+                    heartsContainer.removeChild(heart);
+                }
+            }, (duration + delay) * 1000);
+        }
+
+        // Create hearts periodically
+        setInterval(createHeart, 500);
+
+        // Countdown timer
+        let timeLeft = 24;
+        const timerElement = document.getElementById('timer');
+        const timeLeftElement = document.getElementById('time-left');
+        
+        const countdown = setInterval(() => {
+            timeLeft--;
+            
+            // Format time for display
+            const minutes = Math.floor(timeLeft / 60);
+            const seconds = timeLeft % 60;
+            timerElement.textContent = timeLeft;
+            timeLeftElement.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+            
+            if (timeLeft <= 10) {
+                timerElement.style.color = '#ff6b6b';
+                timerElement.style.fontWeight = 'bold';
+            }
+            
+            if (timeLeft <= 0) {
+                clearInterval(countdown);
+                document.querySelector('.countdown').innerHTML = "<i class='fas fa-exclamation-triangle'></i> TIME'S UP! But we'll give you one last chance...";
+            }
+        }, 1000);
+
+        // Random encouraging messages
+        const messages = [
+            "Scientists confirm: Clicking this button releases dopamine in your brain!",
+            "This button has been endorsed by 9 out of 10 happiness experts!",
+            "What if this button leads to free pizza for life? The possibility is real!",
+            "People who click this button report 73% more success in their daily lives!",
+            "This button is scientifically proven to make you more attractive!",
+            "97% of users say clicking this button was the best decision they ever made!",
+            "This button contains the answer to life's greatest mysteries!",
+            "Warning: Not clicking may result in intense curiosity and mild regret!"
+        ];
+        
+        let messageIndex = 0;
+        const hintElement = document.getElementById('hint');
+        setInterval(() => {
+            hintElement.style.opacity = 0;
+            setTimeout(() => {
+                hintElement.textContent = messages[messageIndex];
+                hintElement.style.opacity = 0.8;
+                messageIndex = (messageIndex + 1) % messages.length;
+            }, 500);
+        }, 6000);
+
+        // Fake notification
+        const notification = document.getElementById('notification');
+        setInterval(() => {
+            notification.classList.add('show');
+            setTimeout(() => {
+                notification.classList.remove('show');
+            }, 3000);
+        }, 15000);
+
+        // Increase click count
+        const clickCountElement = document.getElementById('click-count');
+        setInterval(() => {
+            let currentCount = parseInt(clickCountElement.textContent.replace(/,/g, ''));
+            currentCount += Math.floor(Math.random() * 5) + 1;
+            clickCountElement.textContent = currentCount.toLocaleString();
+        }, 3000);
+
+        // Add hover sound effect (commented out as it requires user interaction first)
+        /*
+        const button = document.getElementById('magic-button');
+        const hoverSound = new Audio('hover-sound.mp3');
+        
+        button.addEventListener('mouseenter', () => {
+            hoverSound.currentTime = 0;
+            hoverSound.play();
+        });
+        */
+
+        // Add sparkle effect on button hover
+        button.addEventListener('mousemove', (e) => {
+            const rect = button.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            // Create sparkle
+            const sparkle = document.createElement('div');
+            sparkle.style.position = 'absolute';
+            sparkle.style.left = x + 'px';
+            sparkle.style.top = y + 'px';
+            sparkle.style.width = '20px';
+            sparkle.style.height = '20px';
+            sparkle.style.background = 'radial-gradient(circle, white, transparent)';
+            sparkle.style.borderRadius = '50%';
+            sparkle.style.pointerEvents = 'none';
+            sparkle.style.zIndex = '10';
+            button.appendChild(sparkle);
+            
+            // Animate sparkle
+            sparkle.animate([
+                { transform: 'scale(0)', opacity: 1 },
+                { transform: 'scale(1.5)', opacity: 0 }
+            ], {
+                duration: 600,
+                easing: 'ease-out'
+            });
+            
+            // Remove sparkle after animation
+            setTimeout(() => {
+                if (button.contains(sparkle)) {
+                    button.removeChild(sparkle);
+                }
+            }, 600);
+        });
+    </script>
+</body>
+</html>

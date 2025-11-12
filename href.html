@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ULTIMATE CELEBRATION! You're Amazing!</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Comic Neue', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #FFD700;
+            --secondary: #FF6B6B;
+            --accent: #4ECDC4;
+            --purple: #9D50BB;
+            --pink: #FF69B4;
+            --orange: #FF8E53;
+            --dark: #0f2027;
+        }
+
+        body {
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+            min-height: 100vh;
+            overflow-x: hidden;
+            color: white;
+            position: relative;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .hero-section {
+            text-align: center;
+            padding: 4rem 2rem;
+            position: relative;
+        }
+
+        .hero-icon {
+            font-size: 15rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            text-shadow: 0 0 80px var(--primary);
+            animation: iconDance 2s ease-in-out infinite;
+        }
+
+        h1 {
+            font-size: 8rem;
+            margin-bottom: 2rem;
+            text-shadow: 0 5px 30px rgba(0, 0, 0, 0.8);
+            background: linear-gradient(to right, var(--primary), var(--secondary), var(--accent), var(--purple), var(--pink), var(--orange), var(--primary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            line-height: 1.1;
+            animation: titleRainbow 3s linear infinite, titleBounce 1.5s ease-in-out infinite;
+        }
+
+        .subtitle {
+            font-size: 3.5rem;
+            margin-bottom: 3rem;
+            line-height: 1.4;
+            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.6);
+            opacity: 0.9;
+            max-width: 900px;
+            margin-left: auto;
+            margin-right: auto;
+            animation: subtitleFloat 4s ease-in-out infinite;
+        }
+
+        .achievement-card {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 40px;
+            padding: 5rem;
+            margin: 4rem 0;
+            backdrop-filter: blur(25px);
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.5), 0 0 100px rgba(255, 215, 0, 0.3);
+            border: 3px solid rgba(255, 255, 255, 0.3);
+            position: relative;
+            overflow: hidden;
+            animation: cardGlow 5s ease-in-out infinite, cardPulse 3s ease-in-out infinite;
+        }
+
+        .achievement-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: linear-gradient(to right, var(--primary), var(--secondary), var(--accent), var(--purple), var(--pink), var(--orange));
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 3rem;
+            margin: 5rem 0;
+        }
+
+        .stat {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 3rem;
+            border-radius: 30px;
+            text-align: center;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.4);
+            transition: all 0.4s ease;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            animation: statFloat 8s ease-in-out infinite;
+        }
+
+        .stat:hover {
+            transform: translateY(-20px) scale(1.08);
+            box-shadow: 0 30px 70px rgba(0, 0, 0, 0.6);
+        }
+
+        .stat-number {
+            font-size: 6rem;
+            font-weight: bold;
+            color: var(--primary);
+            text-shadow: 0 0 40px rgba(255, 215, 0, 0.8);
+            margin-bottom: 1.5rem;
+        }
+
+        .stat-label {
+            font-size: 1.8rem;
+            opacity: 0.9;
+        }
+
+        .celebration-text {
+            font-size: 2.8rem;
+            line-height: 1.8;
+            margin: 5rem 0;
+            text-align: center;
+            padding: 4rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            animation: textPulse 3s ease-in-out infinite;
+        }
+
+        .highlight {
+            color: var(--primary);
+            font-weight: bold;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+            animation: highlightPulse 1.5s ease-in-out infinite;
+        }
+
+        .action-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin: 5rem 0;
+            flex-wrap: wrap;
+        }
+
+        .action-button {
+            padding: 25px 65px;
+            font-size: 2.2rem;
+            font-weight: bold;
+            color: var(--dark);
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            border: none;
+            border-radius: 70px;
+            cursor: pointer;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            transition: all 0.4s ease;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            animation: buttonFloat 4s ease-in-out infinite;
+        }
+
+        .action-button:hover {
+            transform: translateY(-15px) scale(1.1);
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6);
+        }
+
+        .action-button.secondary {
+            background: linear-gradient(45deg, var(--secondary), var(--pink));
+            color: white;
+            animation: buttonFloat 4s ease-in-out infinite reverse;
+        }
+
+        .social-proof {
+            background: rgba(255, 255, 255, 0.12);
+            padding: 4rem;
+            border-radius: 30px;
+            margin: 5rem 0;
+            text-align: center;
+            backdrop-filter: blur(20px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .social-stats {
+            display: flex;
+            justify-content: center;
+            gap: 5rem;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .social-stat {
+            font-size: 1.8rem;
+        }
+
+        .social-stat i {
+            color: var(--primary);
+            margin-right: 12px;
+        }
+
+        .credits {
+            position: fixed;
+            bottom: 25px;
+            left: 25px;
+            font-size: 1.5rem;
+            opacity: 0.9;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 15px 30px;
+            border-radius: 40px;
+            z-index: 100;
+            backdrop-filter: blur(15px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .credits i {
+            color: var(--primary);
+        }
+
+        /* Particles and Effects */
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .particle {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: var(--primary);
+            border-radius: 50%;
+            opacity: 0;
+        }
+
+        .energy-orb {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            border-radius: 50%;
+            background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
+            filter: blur(80px);
+            opacity: 0.2;
+            z-index: 2;
+        }
+
+        .floating-text {
+            position: absolute;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            opacity: 0;
+            z-index: 5;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+        }
+
+        .emoji-float {
+            position: absolute;
+            font-size: 4rem;
+            opacity: 0;
+            z-index: 3;
+            animation: emojiFloat 10s ease-in-out forwards;
+        }
+
+        .bouncing-emoji {
+            position: absolute;
+            font-size: 5rem;
+            z-index: 3;
+            animation: bounce 2.5s ease-in-out infinite;
+        }
+
+        .confetti-piece {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: var(--primary);
+            opacity: 0;
+            z-index: 4;
+        }
+
+        .firework {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            box-shadow: 0 0 20px var(--primary);
+            z-index: 4;
+            opacity: 0;
+        }
+
+        /* Animations */
+        @keyframes iconDance {
+            0% {
+                transform: scale(1) rotate(0deg);
+            }
+            20% {
+                transform: scale(1.3) rotate(15deg);
+            }
+            40% {
+                transform: scale(1.2) rotate(-15deg);
+            }
+            60% {
+                transform: scale(1.4) rotate(10deg);
+            }
+            80% {
+                transform: scale(1.25) rotate(-10deg);
+            }
+            100% {
+                transform: scale(1) rotate(0deg);
+            }
+        }
+
+        @keyframes titleRainbow {
+            0% {
+                filter: hue-rotate(0deg);
+            }
+            25% {
+                filter: hue-rotate(90deg);
+            }
+            50% {
+                filter: hue-rotate(180deg);
+            }
+            75% {
+                filter: hue-rotate(270deg);
+            }
+            100% {
+                filter: hue-rotate(360deg);
+            }
+        }
+
+        @keyframes titleBounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-25px);
+            }
+        }
+
+        @keyframes subtitleFloat {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes cardGlow {
+            0%, 100% {
+                box-shadow: 0 25px 80px rgba(0, 0, 0, 0.5), 0 0 100px rgba(255, 215, 0, 0.3);
+            }
+            50% {
+                box-shadow: 0 25px 100px rgba(0, 0, 0, 0.6), 0 0 150px rgba(255, 215, 0, 0.5);
+            }
+        }
+
+        @keyframes cardPulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.02);
+            }
+        }
+
+        @keyframes textPulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.03);
+            }
+        }
+
+        @keyframes highlightPulse {
+            0%, 100% {
+                text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+            }
+            50% {
+                text-shadow: 0 0 40px rgba(255, 215, 0, 1);
+            }
+        }
+
+        @keyframes buttonFloat {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes statFloat {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-15px);
+            }
+        }
+
+        @keyframes particleFloat {
+            0% {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes textFloat {
+            0% {
+                transform: translateY(100px) rotate(0deg);
+                opacity: 0;
+            }
+            20% {
+                opacity: 1;
+            }
+            80% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(10deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes orbPulse {
+            0% {
+                transform: scale(1);
+                opacity: 0.15;
+            }
+            50% {
+                transform: scale(2);
+                opacity: 0.3;
+            }
+            100% {
+                transform: scale(1);
+                opacity: 0.15;
+            }
+        }
+
+        @keyframes emojiFloat {
+            0% {
+                transform: translateY(100vh) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-50px);
+            }
+        }
+
+        @keyframes confettiFall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes fireworkExplode {
+            0% {
+                transform: translate(var(--x), var(--y)) scale(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translate(var(--x), var(--y)) scale(1);
+                opacity: 0;
+            }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 5rem;
+            }
+            
+            .subtitle {
+                font-size: 2.5rem;
+            }
+            
+            .hero-icon {
+                font-size: 10rem;
+            }
+            
+            .stat-number {
+                font-size: 4.5rem;
+            }
+            
+            .action-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .action-button {
+                width: 100%;
+                max-width: 400px;
+                justify-content: center;
+            }
+        }
+
+        /* Scrollbar Styling */
+        ::-webkit-scrollbar {
+            width: 18px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(var(--primary), var(--accent));
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(var(--accent), var(--primary));
+        }
+    </style>
+</head>
+<body>
+    <div class="particles" id="particles"></div>
+    <div class="energy-orb" id="orb-1"></div>
+    <div class="energy-orb" id="orb-2"></div>
+    <div class="energy-orb" id="orb-3"></div>
+    <div class="energy-orb" id="orb-4"></div>
+    
+    <div id="emoji-container"></div>
+    <div id="bouncing-emojis"></div>
+    <div id="confetti-container"></div>
+    <div id="fireworks-container"></div>
+    
+    <div class="container">
+        <section class="hero-section">
+            <div class="hero-icon">
+                <i class="fas fa-party-horn"></i>
+            </div>
+            
+            <h1>WOW! YOU'RE INCREDIBLE! 🎉</h1>
+            
+            <p class="subtitle">That click just created a MASSIVE happiness explosion across the universe! You've achieved LEGENDARY status! 🌟</p>
+            
+            <div class="achievement-card">
+                <h2 style="font-size: 4rem; margin-bottom: 2.5rem; text-align: center;">THE ULTIMATE HAPPINESS ACHIEVEMENT UNLOCKED! 🏆</h2>
+                <p style="font-size: 2.5rem; text-align: center; line-height: 1.6;">You've joined the <span class="highlight">0.00001% elite</span> of humanity who spread PURE JOY with a single click! ✨</p>
+            </div>
+            
+            <div class="stats-grid">
+                <div class="stat">
+                    <div class="stat-number" id="awesomeness">99.9%</div>
+                    <div class="stat-label">Pure Awesomeness</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number" id="legendary">∞</div>
+                    <div class="stat-label">Happiness Points</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number" id="global-rank">#1</div>
+                    <div class="stat-label">Global Joy Ranking</div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="celebration-text">
+            <p>Your AMAZING click has been recorded in the <span class="highlight">Universal Hall of Happiness</span> for all eternity! 🌈</p>
+            <p style="margin-top: 2.5rem;">Planets aligned, stars danced, and RAINBOWS appeared across the galaxy when you made that click! 🪐✨</p>
+        </section>
+        
+        <div class="action-buttons">
+            <a href="#" class="action-button" id="share-btn">
+                <i class="fas fa-share-alt"></i> SHARE THE JOY!
+            </a>
+            <a href="#" class="action-button secondary" id="celebrate-btn">
+                <i class="fas fa-music"></i> MORE CELEBRATION!
+            </a>
+        </div>
+        
+        <div class="social-proof">
+            <h3 style="font-size: 3rem; margin-bottom: 2rem;">THE UNIVERSE IS CELEBRATING YOUR ACHIEVEMENT! 🎊</h3>
+            <div class="social-stats">
+                <div class="social-stat">
+                    <i class="fas fa-users"></i> 10.5M people inspired
+                </div>
+                <div class="social-stat">
+                    <i class="fas fa-heart"></i> 4.7M hearts warmed
+                </div>
+                <div class="social-stat">
+                    <i class="fas fa-laugh-beam"></i> Infinite smiles created
+                </div>
+            </div>
+        </div>
+        
+        <div class="celebration-text">
+            <p>Your name will echo through history as the one who brought PURE JOY to the world with a single click! 🎇</p>
+            <p style="margin-top: 2.5rem; font-size: 3rem;" class="highlight">YOU ARE ABSOLUTELY PHENOMENAL! 🌟</p>
+        </div>
+    </div>
+    
+    <div class="credits">
+        <i class="fas fa-code"></i> Made by Nelson
+    </div>
+
+    <audio id="yaySound" src="yay.mp3"></audio>
+
+    <script>
+        // Create floating particles
+        const particlesContainer = document.getElementById('particles');
+        const colors = ['#FFD700', '#FF6B6B', '#4ECDC4', '#FF8E53', '#9D50BB', '#FF69B4', '#FFD700'];
+        
+        function createParticle() {
+            const particle = document.createElement('div');
+            particle.classList.add('particle');
+            
+            // Random position
+            particle.style.left = Math.random() * 100 + 'vw';
+            
+            // Random color
+            particle.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            
+            // Random size
+            const size = Math.random() * 25 + 10;
+            particle.style.width = size + 'px';
+            particle.style.height = size + 'px';
+            
+            // Random shape
+            if (Math.random() > 0.5) {
+                particle.style.borderRadius = '0';
+                particle.style.transform = `rotate(${Math.random() * 360}deg)`;
+            } else {
+                particle.style.borderRadius = '50%';
+            }
+            
+            // Random animation
+            const duration = Math.random() * 12 + 6;
+            const delay = Math.random() * 5;
+            const xMovement = (Math.random() - 0.5) * 150;
+            particle.style.animation = `particleFloat ${duration}s linear ${delay}s forwards`;
+            particle.style.setProperty('--x-movement', `${xMovement}vw`);
+            
+            particlesContainer.appendChild(particle);
+            
+            // Remove particle after animation
+            setTimeout(() => {
+                if (particlesContainer.contains(particle)) {
+                    particlesContainer.removeChild(particle);
+                }
+            }, (duration + delay) * 1000);
+        }
+
+        // Create continuous particles
+        setInterval(createParticle, 50);
+
+        // Create floating text elements
+        function createFloatingText() {
+            const texts = [
+                "LEGENDARY! 🦄", "PHENOMENAL! 🌟", "UNBELIEVABLE! 🎊", 
+                "WOW! 🎉", "AMAZING! ✨", "INCREDIBLE! 🚀", "SPECTACULAR! 🌈",
+                "FANTASTIC! 🎇", "AWESOME! 🥳", "BRILLIANT! 💫", "MIND-BLOWING! 🤯",
+                "EPIC! 🔥", "FABULOUS! 💖", "MAGNIFICENT! 👑", "SUPERB! ⭐"
+            ];
+            
+            const text = document.createElement('div');
+            text.classList.add('floating-text');
+            text.textContent = texts[Math.floor(Math.random() * texts.length)];
+            
+            // Random position
+            text.style.left = Math.random() * 80 + 10 + 'vw';
+            text.style.top = Math.random() * 50 + 25 + 'vh';
+            
+            // Random color
+            text.style.color = colors[Math.floor(Math.random() * colors.length)];
+            
+            // Random animation
+            const duration = Math.random() * 5 + 3;
+            const delay = Math.random() * 2;
+            text.style.animation = `textFloat ${duration}s ease-in-out ${delay}s forwards`;
+            
+            document.body.appendChild(text);
+            
+            // Remove text after animation
+            setTimeout(() => {
+                if (document.body.contains(text)) {
+                    document.body.removeChild(text);
+                }
+            }, (duration + delay) * 1000);
+        }
+
+        // Create floating text periodically
+        setInterval(createFloatingText, 400);
+
+        // Create floating emojis
+        const emojiContainer = document.getElementById('emoji-container');
+        const emojis = ['🎉', '🎊', '🌟', '✨', '🎇', '🎆', '🦄', '🌈', '🚀', '🥳', '🎁', '🎈', '💫', '👑', '⭐', '🔥', '💖', '🤯'];
+        
+        function createFloatingEmoji() {
+            const emoji = document.createElement('div');
+            emoji.classList.add('emoji-float');
+            emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+            
+            // Random position
+            emoji.style.left = Math.random() * 100 + 'vw';
+            
+            // Random size
+            const size = Math.random() * 6 + 3;
+            emoji.style.fontSize = size + 'rem';
+            
+            // Random animation
+            const duration = Math.random() * 12 + 8;
+            const delay = Math.random() * 5;
+            const xMovement = (Math.random() - 0.5) * 300;
+            emoji.style.animation = `emojiFloat ${duration}s ease-in-out ${delay}s forwards`;
+            emoji.style.setProperty('--x-movement', `${xMovement}px`);
+            
+            emojiContainer.appendChild(emoji);
+            
+            // Remove emoji after animation
+            setTimeout(() => {
+                if (emojiContainer.contains(emoji)) {
+                    emojiContainer.removeChild(emoji);
+                }
+            }, (duration + delay) * 1000);
+        }
+
+        // Create floating emojis periodically
+        setInterval(createFloatingEmoji, 300);
+
+        // Create bouncing emojis
+        const bouncingEmojisContainer = document.getElementById('bouncing-emojis');
+        
+        function createBouncingEmoji() {
+            const emoji = document.createElement('div');
+            emoji.classList.add('bouncing-emoji');
+            emoji.textContent = emojis[Math.floor(Math.random() * emojis.length)];
+            
+            // Random position
+            emoji.style.left = Math.random() * 90 + 5 + 'vw';
+            emoji.style.top = Math.random() * 80 + 10 + 'vh';
+            
+            // Random color
+            emoji.style.color = colors[Math.floor(Math.random() * colors.length)];
+            
+            // Random animation delay
+            emoji.style.animationDelay = Math.random() * 2 + 's';
+            
+            bouncingEmojisContainer.appendChild(emoji);
+        }
+
+        // Create bouncing emojis
+        for (let i = 0; i < 25; i++) {
+            createBouncingEmoji();
+        }
+
+        // Create confetti
+        const confettiContainer = document.getElementById('confetti-container');
+        
+        function createConfetti() {
+            const confetti = document.createElement('div');
+            confetti.classList.add('confetti-piece');
+            
+            // Random position
+            confetti.style.left = Math.random() * 100 + 'vw';
+            
+            // Random color
+            confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            
+            // Random size
+            const size = Math.random() * 25 + 15;
+            confetti.style.width = size + 'px';
+            confetti.style.height = size + 'px';
+            
+            // Random shape
+            if (Math.random() > 0.5) {
+                confetti.style.borderRadius = '0';
+                confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+            } else {
+                confetti.style.borderRadius = '50%';
+            }
+            
+            // Random animation
+            const duration = Math.random() * 4 + 2;
+            const delay = Math.random() * 2;
+            confetti.style.animation = `confettiFall ${duration}s linear ${delay}s forwards`;
+            
+            confettiContainer.appendChild(confetti);
+            
+            // Remove confetti after animation
+            setTimeout(() => {
+                if (confettiContainer.contains(confetti)) {
+                    confettiContainer.removeChild(confetti);
+                }
+            }, (duration + delay) * 1000);
+        }
+
+        // Create continuous confetti
+        setInterval(createConfetti, 50);
+
+        // Create fireworks
+        const fireworksContainer = document.getElementById('fireworks-container');
+        
+        function createFirework() {
+            const x = Math.random() * 100;
+            const y = Math.random() * 100;
+            
+            for (let i = 0; i < 80; i++) {
+                const firework = document.createElement('div');
+                firework.classList.add('firework');
+                
+                // Random color
+                firework.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                
+                // Random position around the explosion point
+                const angle = Math.random() * Math.PI * 2;
+                const distance = Math.random() * 150 + 100;
+                const xOffset = Math.cos(angle) * distance;
+                const yOffset = Math.sin(angle) * distance;
+                
+                firework.style.setProperty('--x', `${xOffset}px`);
+                firework.style.setProperty('--y', `${yOffset}px`);
+                
+                // Random size
+                const size = Math.random() * 12 + 6;
+                firework.style.width = size + 'px';
+                firework.style.height = size + 'px';
+                
+                // Random animation
+                const duration = Math.random() * 1.5 + 0.5;
+                const delay = Math.random() * 0.5;
+                firework.style.animation = `fireworkExplode ${duration}s ease-out ${delay}s forwards`;
+                
+                fireworksContainer.appendChild(firework);
+                
+                // Remove firework after animation
+                setTimeout(() => {
+                    if (fireworksContainer.contains(firework)) {
+                        fireworksContainer.removeChild(firework);
+                    }
+                }, (duration + delay) * 1000);
+            }
+        }
+
+        // Create fireworks periodically
+        setInterval(createFirework, 1000);
+
+        // Animate energy orbs
+        const orb1 = document.getElementById('orb-1');
+        const orb2 = document.getElementById('orb-2');
+        const orb3 = document.getElementById('orb-3');
+        const orb4 = document.getElementById('orb-4');
+        
+        // Position orbs
+        orb1.style.top = '5%';
+        orb1.style.left = '5%';
+        orb1.style.background = 'radial-gradient(circle, #FFD700 0%, transparent 70%)';
+        
+        orb2.style.bottom = '10%';
+        orb2.style.right = '8%';
+        orb2.style.background = 'radial-gradient(circle, #4ECDC4 0%, transparent 70%)';
+        
+        orb3.style.top = '50%';
+        orb3.style.left = '50%';
+        orb3.style.transform = 'translate(-50%, -50%)';
+        orb3.style.background = 'radial-gradient(circle, #FF69B4 0%, transparent 70%)';
+        
+        orb4.style.top = '70%';
+        orb4.style.left = '20%';
+        orb4.style.background = 'radial-gradient(circle, #9D50BB 0%, transparent 70%)';
+        
+        // Add animation to orbs
+        orb1.style.animation = 'orbPulse 8s ease-in-out infinite';
+        orb2.style.animation = 'orbPulse 10s ease-in-out infinite reverse';
+        orb3.style.animation = 'orbPulse 12s ease-in-out infinite';
+        orb4.style.animation = 'orbPulse 9s ease-in-out infinite reverse';
+
+        // Button functionality
+        const shareButton = document.getElementById('share-btn');
+        shareButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Create explosion effect
+            for (let i = 0; i < 120; i++) {
+                setTimeout(() => {
+                    createParticle();
+                    if (i % 3 === 0) createConfetti();
+                }, i * 20);
+            }
+            
+            // Show message
+            alert("You've shared your incredible joy with the entire universe! Everyone is celebrating with you! 🎉");
+        });
+
+        const celebrateButton = document.getElementById('celebrate-btn');
+        const yaySound = document.getElementById('yaySound');
+        
+        celebrateButton.addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            // Play Yay sound
+            yaySound.currentTime = 0;
+            yaySound.play().catch(e => console.log("Audio play failed:", e));
+            
+            // Create intense celebration
+            for (let i = 0; i < 200; i++) {
+                setTimeout(() => {
+                    createParticle();
+                    createConfetti();
+                    if (i % 5 === 0) {
+                        createFloatingText();
+                        createFloatingEmoji();
+                    }
+                    if (i % 20 === 0) {
+                        createFirework();
+                    }
+                }, i * 10);
+            }
+            
+            // Change title temporarily
+            const originalTitle = document.querySelector('h1').textContent;
+            document.querySelector('h1').textContent = "EVEN MORE AMAZING! 🎊";
+            document.querySelector('h1').style.animation = 'titleRainbow 1s linear infinite, titleBounce 0.5s ease-in-out infinite';
+            
+            setTimeout(() => {
+                document.querySelector('h1').textContent = originalTitle;
+                document.querySelector('h1').style.animation = 'titleRainbow 3s linear infinite, titleBounce 1.5s ease-in-out infinite';
+            }, 3000);
+        });
+
+        // Animate stat numbers
+        function animateValue(element, start, end, duration, isPercent = false, isInfinity = false) {
+            if (isInfinity) {
+                element.textContent = "∞";
+                return;
+            }
+            
+            let startTimestamp = null;
+            const step = (timestamp) => {
+                if (!startTimestamp) startTimestamp = timestamp;
+                const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+                const value = Math.floor(progress * (end - start) + start);
+                element.textContent = isPercent ? value + "%" : value;
+                if (progress < 1) {
+                    window.requestAnimationFrame(step);
+                }
+            };
+            window.requestAnimationFrame(step);
+        }
+
+        // Animate stats after a delay
+        setTimeout(() => {
+            animateValue(document.getElementById('awesomeness'), 0, 99, 3000, true);
+            animateValue(document.getElementById('legendary'), 0, 1, 3000, false, true);
+            animateValue(document.getElementById('global-rank'), 100, 1, 3000);
+        }, 1000);
+
+        // Add floating animation to stats
+        const stats = document.querySelectorAll('.stat');
+        stats.forEach((stat, index) => {
+            stat.style.animationDelay = `${index * 0.3}s`;
+        });
+
+        // Add scroll-triggered animations
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const rate = scrolled * -0.5;
+            
+            // Parallax effect for particles
+            particlesContainer.style.transform = `translateY(${rate}px)`;
+        });
+
+        // Initial celebration burst
+        window.addEventListener('load', function() {
+            // Play yay sound on load
+            yaySound.play().catch(e => console.log("Audio play failed:", e));
+            
+            // Create massive celebration
+            for (let i = 0; i < 300; i++) {
+                setTimeout(() => {
+                    createParticle();
+                    if (i % 5 === 0) createConfetti();
+                    if (i % 10 === 0) createFloatingText();
+                    if (i % 15 === 0) createFloatingEmoji();
+                    if (i % 25 === 0) createFirework();
+                }, i * 15);
+            }
+        });
+    </script>
+</body>
+</html>
